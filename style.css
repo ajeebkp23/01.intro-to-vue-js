@@ -1,0 +1,17 @@
+.some-static-style {
+    padding: 30px;
+    color: #084f38;
+}
+div {
+    border-radius: 1rem;
+    padding: .5rem;
+}
+ul li {
+    padding: .1rem;
+    border-radius: .3rem;
+    list-style: upper-roman;
+    margin: .3rem;
+}
+div.review-item{
+    border-radius: 1rem;
+}

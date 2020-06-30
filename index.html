@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+	 <title>Hello Vue Js</title>
+
+	 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+	 <link rel="stylesheet" href="bootstrap.min.css">
+	 <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+
+	<div id="app">
+		<div :style="styles.topbar" :class="{row: true,someStaticStyle: true}">
+			<div class="col-4 pl-5">
+				Hello, Welcome
+			</div>
+			<div class="col-5"></div>
+			<div class="col-3">
+				<span :style="styles.alCart">
+					Cart: {{ cart.length }} 
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6" 
+					>
+				<div class="row">
+					<div class="col-12"
+							v-for="product in productList"
+					>
+						<product-item 
+							:product="product"
+							:cartcount="cart.length"
+							@add-to-cart="updateCart"
+							@remove-from-cart="removeItem"
+							></product-item>
+						<product-review :product="product" @submit-review="submitReview"></product-review>
+					</div>
+				</div>
+			</div>
+			<div class="col-1">
+			</div>
+			<div class="col-3">
+				<div v-if="cart.length" style="border: 1px solid rebeccapurple;" >
+					<!--  pdt  -->
+					<h3>Items in Cart</h3>
+					<div   v-for="pdt in cart" class="row">
+						<div class="col">
+							<div class="row">
+								<div>
+									<h6>Product</h6>
+									{{ pdt.product.name }}
+								</div>
+								<div>
+									Brand:
+									{{ pdt.product.brand }}
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<h3>Variant</h3>
+							<div class="col">
+								<img :src="pdt.variant.img" alt="" width="100%" >
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- development version, includes helpful console warnings -->
+	
+	<!-- development version, includes helpful console warnings 
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	 -->
+	<script src="vue.js"></script>
+
+ 	<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
+
+ 	<script src="jquery-3.5.1.slim.min.js"></script>
+	<script src="popper.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script src="script.js"></script>
+ </body>
+ </html> 
